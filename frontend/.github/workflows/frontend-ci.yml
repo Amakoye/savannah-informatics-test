@@ -5,6 +5,7 @@ on:
     branches:
       - development
       - production
+   workflow_dispatch:
 
 jobs:
   lint-and-test:
