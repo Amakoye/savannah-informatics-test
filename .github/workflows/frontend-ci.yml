@@ -22,6 +22,16 @@ jobs:
       - name: Navigate to frontend folder
         run: cd frontend/
 
+      - name: Remove node_modules and yarn.lock
+        run: |
+          rm -rf node_modules
+          rm -f yarn.lock
+        working-directory: frontend/
+
+      - name: Clear Yarn Cache
+        run: yarn cache clean
+        working-directory: frontend/
+
       - name: Install dependencies
         run: yarn install
         working-directory: frontend/
