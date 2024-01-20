@@ -55,11 +55,14 @@ jobs:
         with:
           node-version: 18.17.0
 
+      - name: Navigate to frontend folder
+        run: cd frontend/
+
       - name: Install Vercel CLI
         run: |
           npm install -g vercel
-          export PATH=$PATH:$(npm bin -g)
 
       - name: Deploy to Vercel
+        shell: bash
         run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
         working-directory: frontend/
