@@ -20,7 +20,7 @@ jobs:
           node-version: 18.17.0
 
       - name: Navigate to frontend folder
-        run: cd frontend
+        run: cd frontend/
 
       - name: Install dependencies
         run: yarn install
