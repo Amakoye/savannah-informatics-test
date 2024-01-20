@@ -45,6 +45,7 @@ jobs:
         working-directory: frontend/
 
   deploy-to-vercel:
+    needs: lint-and-test
     runs-on: ubuntu-latest
     if: github.event.ref == 'refs/heads/production'
 
@@ -53,6 +54,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.17.0
+
+      - name: Navigate to frontend folder
+        run: cd frontend/
 
       - name: Install Vercel CLI
         run: npm install -g vercel
