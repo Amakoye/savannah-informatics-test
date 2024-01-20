@@ -26,14 +26,6 @@ jobs:
         run: yarn install
         working-directory: frontend/
 
-      - name: Install Husky
-        run: yarn add husky --dev
-        working-directory: frontend/
-
-      - name: Install Git hooks
-        run: npx husky install
-        working-directory: frontend/
-
       - name: Run linting
         run: yarn lint
         working-directory: frontend/
