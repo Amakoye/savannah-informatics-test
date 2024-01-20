@@ -56,8 +56,11 @@ jobs:
           node-version: 18.17.0
 
       - name: Install Vercel CLI
-        run: npm install -g vercel
+        run: |
+          npm install -g vercel
+          export PATH=$PATH:$(npm bin -g)
 
       - name: Deploy to Vercel
         run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+        shell: bash
         working-directory: frontend/
