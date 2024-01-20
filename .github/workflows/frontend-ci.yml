@@ -1,0 +1,45 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - development
+      - production
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.17.0
+
+      - name: Navigate to frontend folder
+        run: cd frontend/
+
+      - name: Remove node_modules and yarn.lock
+        run: |
+          rm -rf node_modules
+          rm -f yarn.lock
+        working-directory: frontend/
+
+      - name: Clear Yarn Cache
+        run: yarn cache clean
+        working-directory: frontend/
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: frontend/
+
+      - name: Run linting
+        run: yarn lint
+        working-directory: frontend/
+
+      - name: Run tests
+        run: yarn test
+        working-directory: frontend/
