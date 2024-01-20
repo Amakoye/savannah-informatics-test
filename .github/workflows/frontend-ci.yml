@@ -44,25 +44,25 @@ jobs:
         run: yarn test
         working-directory: frontend/
 
-  deploy-to-vercel:
-    needs: lint-and-test
-    runs-on: ubuntu-latest
-    if: github.event.ref == 'refs/heads/production'
+  # deploy-to-vercel:
+  #   needs: lint-and-test
+  #   runs-on: ubuntu-latest
+  #   if: github.event.ref == 'refs/heads/production'
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.17.0
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18.17.0
 
-      - name: Navigate to frontend folder
-        run: cd frontend/
+  #     - name: Navigate to frontend folder
+  #       run: cd frontend/
 
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        # working-directory: frontend/
+  #     - name: Deploy to Vercel
+  #       uses: amondnet/vercel-action@v20
+  #       with:
+  #       vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  #       working-directory: frontend/
