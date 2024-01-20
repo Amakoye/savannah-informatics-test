@@ -56,7 +56,7 @@ jobs:
           node-version: 18.17.0
 
       - name: Navigate to frontend folder
-        run: pwd
+        run: pwd && ls
 
       - name: Install Vercel CLI
         run: npm install -g vercel
