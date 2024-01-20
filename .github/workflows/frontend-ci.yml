@@ -61,6 +61,6 @@ jobs:
           export PATH=$PATH:$(npm bin -g)
 
       - name: Deploy to Vercel
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
         shell: bash
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
         working-directory: frontend/
