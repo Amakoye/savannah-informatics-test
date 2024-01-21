@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:cmd": "SET PORT=4200 && next dev",
-    "dev": "PORT=4200 next dev",
+    "dev:cmd": "SET PORT=4201 && next dev",
+    "dev": "PORT=4201 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "lint-staged && eslint . --ext .js,.jsx,.ts,.tsx",
