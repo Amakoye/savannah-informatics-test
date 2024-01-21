@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import useResponsive from "hooks/useResponsive";
 import React from "react";
+import useResponsive from "../../../hooks/useResponsive";
 
 describe("useResponsive hook", () => {
   // Mocking MUI useTheme and useMediaQuery
