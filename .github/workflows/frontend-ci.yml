@@ -5,6 +5,9 @@ on:
     branches:
       - development
       - production
+  [pull_request]:
+    branches:
+      - production
 
 jobs:
   lint-and-test:
@@ -52,16 +55,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        # Add your build commands here
+        run: |
+          yarn install
+          yarn build
+        working-directory: ./frontend/
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: amondnet/vercel-action@v20
         with:
-          node-version: 18.17.0
-
-      - name: Navigate to frontend folder
-        run: cd frontend/
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-          token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          working-directory: ./frontend/
