@@ -53,6 +53,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Remove node_modules and yarn.lock
+        run: |
+          rm -rf node_modules
+          rm -f yarn.lock
+        working-directory: frontend/
+
+      - name: Clear Yarn Cache
+        run: yarn cache clean
+        working-directory: frontend/
+
       - name: Run Build
         run: |
           yarn install
