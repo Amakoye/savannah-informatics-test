@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   pgdb:
-    container_name: pgdb_ecommerce
+    container_name: pgdb_savannah_info
     image: postgres
     restart: always
     ports:

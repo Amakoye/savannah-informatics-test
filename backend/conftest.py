@@ -1,1 +1,1 @@
-pytest_plugins = []
+pytest_plugins = ["core.tests.api_client"]

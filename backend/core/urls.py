@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from core.album.views import Album, Photo
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("djoser.urls")),
     path("api/", include("djoser.urls.jwt")),
+    path("api/albums/", Album.as_view(), name="list-albums"),
+    path("api/photos/", Photo.as_view(), name="list-photos"),
+    path("api/photos/<int:pk>/", Photo.as_view(), name="photo-detail"),
 ]
