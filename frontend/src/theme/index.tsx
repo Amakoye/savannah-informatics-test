@@ -11,6 +11,7 @@ import {
 import { useMemo } from "react";
 import breakpoints from "./breakpoints";
 import overrides from "./overrides";
+import palette from "./palette";
 
 import typography from "./typography";
 
@@ -20,6 +21,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const theme = useMemo(() => {
     const theme = createTheme({
       typography,
+      palette: palette[mode],
       alpha,
       lighten,
       darken,
