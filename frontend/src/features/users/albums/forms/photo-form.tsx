@@ -54,7 +54,6 @@ const PhotoFormDialog = forwardRef<PhotoFormDialogRef, PhotoFormDialogProps>(
 
     const onSubmit = handleSubmit(
       (values) => {
-        console.log(values);
         if (values.title) {
           dispatch(
             reduxPostUserAlbumPhoto({
@@ -68,10 +67,14 @@ const PhotoFormDialog = forwardRef<PhotoFormDialogRef, PhotoFormDialogProps>(
                 variant: "success",
               });
               dispatch(reduxGetUserAlbumsPhotos(album_id));
+              reset({ ...values, open: false });
+            } else {
+              enqueueSnackbar("Something went wrong", {
+                variant: "error",
+              });
             }
           });
         }
-        reset({ ...values, open: false });
       },
       (e) => console.error(e)
     );
