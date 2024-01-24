@@ -1,1 +1,10 @@
 .vercel
+.env.*
+env/
+*.pyc
+
+# Ignore Django migration files
+**/migrations/*
+
+# Ignore Python cache directory
+__pycache__/
