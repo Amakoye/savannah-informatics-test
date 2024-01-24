@@ -16,13 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.album.views import Album, Photo
+from core.album.views import AlbumView, PhotoView
+from core.users.views import UserListView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("djoser.urls")),
     path("api/", include("djoser.urls.jwt")),
-    path("api/albums/", Album.as_view(), name="list-albums"),
-    path("api/photos/", Photo.as_view(), name="list-photos"),
-    path("api/photos/<int:pk>/", Photo.as_view(), name="photo-detail"),
-]
+    path("api/user/all/", UserListView.as_view(), name="list-users"),
+    path("api/albums/", AlbumView.as_view(), name="list-albums"),
+    path(
+        "api/albums/user/<int:user_id>", AlbumView.as_view(), name="list-users-albums"
+    ),
+    path("api/photos/", PhotoView.as_view(), name="list-photos"),
+    path("api/photos/<int:pk>/", PhotoView.as_view(), name="photo-detail"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
