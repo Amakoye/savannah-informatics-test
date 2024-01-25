@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v18
         with:
           node-version: 18.17.0
 
@@ -54,7 +54,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v18
         with:
           node-version: 18.17.0
 
