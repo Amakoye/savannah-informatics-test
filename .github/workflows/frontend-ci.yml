@@ -63,11 +63,15 @@ jobs:
         run: yarn cache clean
         working-directory: frontend/
 
-      - name: Run Build
-        run: |
-          yarn install
-          yarn build
-        working-directory: ./frontend/
+      - name: Set Environment Variable
+        run: echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env
+        working-directory: frontend/
+
+      # - name: Run Build
+      #   run: |
+      #     yarn install
+      #     yarn build
+      #   working-directory: ./frontend/
 
       - uses: amondnet/vercel-action@v20
         with:
