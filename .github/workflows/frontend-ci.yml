@@ -72,6 +72,13 @@ jobs:
         run: echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env
         working-directory: frontend/
 
+      - uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+
       - name: Install dependencies and build
         run: |
           yarn install
@@ -101,10 +108,3 @@ jobs:
       #     yarn install
       #     yarn build
       #   working-directory: ./frontend/
-
-      # - uses: amondnet/vercel-action@v20
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      #     vercel-args: "--prod"
-      #     vercel-org-id: ${{ secrets.ORG_ID }}
-      #     vercel-project-id: ${{ secrets.PROJECT_ID }}
