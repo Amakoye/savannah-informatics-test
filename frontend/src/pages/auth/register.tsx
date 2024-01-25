@@ -42,7 +42,7 @@ const RegisterPage: NextPageWithLayout = () => {
    * @returns None
    */
   const onSubmit = methods.handleSubmit(({ ...data }) => {
-    return dispatch(reduxRegisterUser(data)).then((response) => {
+    return dispatch(reduxRegisterUser(data as any)).then((response) => {
       if (isRejected(response)) {
         enqueueSnackbar("Failed to register. Please try again", {
           variant: "error",

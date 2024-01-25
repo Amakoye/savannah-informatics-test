@@ -25,14 +25,15 @@ export const apiPostUserAlbumPhoto = (data: {
   album: number;
 }) =>
   api
-    .post<any>(
+    .post(
       `/photos/`,
       {
         ...data,
       },
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type":
+            "multipart/form-data; boundary=<calculated when request is sent>",
           "Content-Disposition": "form-data",
         },
       }
