@@ -6,16 +6,17 @@ services:
     image: postgres
     restart: always
     ports:
-      - 5432:5432
+      - 5434:5432
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web_server:
-    build: .
-    container_name: backend_api
-    volumes:
-      - ./backend:/backend_api
-    ports:
-      - "8000:8000"
+  # web_server:
+  #   build: .
+  #   container_name: backend_api
+  #   volumes:
+  #     - ./savannah-informatics-test/backend:/savannah-informatics-test/backend
+
+  #   ports:
+  #     - "8000:8000"
   
